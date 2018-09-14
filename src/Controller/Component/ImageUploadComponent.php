@@ -61,7 +61,7 @@ class ImageUploadComponent extends Component {
     public function upload_image_and_thumbnail($img, $folderName, $id) {
         $output = [];
         $homedir = "img/" . $folderName;
-        $this->homeUploaddir = "img/" . $folderName . "/img_" . $id;
+        $this->homeUploaddir = "img/" . $folderName . "/brand_" . $id;
         /* check the image is empty or not #-start if */
         if (strlen($img['name']) != 0):
             if (!file_exists($homedir)) {
@@ -119,7 +119,7 @@ class ImageUploadComponent extends Component {
 
     public function deleteImage($id, $folderName) {
         /* Get the Directory path to delete folder */
-        $this->homeUploaddir = "img/" . $folderName . "/img_" . $id;
+        $this->homeUploaddir = "img/" . $folderName . "/brand_" . $id;
         if (file_exists($this->homeUploaddir)) {
             $imagesList = array_diff(scandir($this->homeUploaddir), array('.', '..'));
             foreach ($imagesList as $image) {
@@ -144,7 +144,7 @@ class ImageUploadComponent extends Component {
     public function getImage($id, $filePath, $imageSize, $folderName) {
 
         if (!empty($filePath)) {
-            $FileURL = $this->homeUploaddir = "img/" . $folderName . "/img_" . $id;
+            $FileURL = $this->homeUploaddir = "img/" . $folderName . "/brand_" . $id;
             $fileName = str_replace($FileURL, "", $filePath);
             $ext = substr($fileName, strrpos($fileName, "."));
             $imagePath = basename($fileName, $ext) . "-$imageSize" . 'x' . "$imageSize" . $ext;

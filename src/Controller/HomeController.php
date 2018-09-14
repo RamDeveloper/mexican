@@ -32,7 +32,7 @@ class HomeController extends AppController
     public function index()
     {
         $speciality = $this->Speciality->find('list', ['keyField' => 'id', 'valueField' => 'name'])->where(['Speciality.is_active' => 1])->enableHydration(false)->toArray();
-        $list_brands = $this->Brand->find('all')->where(['Brand.is_active'=>1]);
+        $list_brands = $this->Brand->find('all')->where(['Brand.is_active'=>1,'Brand.speciality_id'=>1]);
         foreach ($list_brands as $key => $val) {
             // $brand[$key]['id'] = $val->id;
             $brand[$key]['value'] = $val->name;
@@ -130,7 +130,6 @@ class HomeController extends AppController
         $this->response->type('json');
         foreach ($list_brands as $key => $val) {
             $brand[$key]['id'] = $val->id;
-            $brand[$key]['label'] = $val->name;
             $brand[$key]['value'] = $val->name;
         }
         $this->response->body(json_encode($brand));

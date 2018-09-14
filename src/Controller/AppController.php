@@ -16,6 +16,9 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\Core\Configure;
+use Cake\Routing\Router;
+use Cake\Auth\DefaultPasswordHasher;
 
 /**
  * Application Controller

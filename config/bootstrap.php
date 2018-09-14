@@ -43,6 +43,7 @@ use Cake\Log\Log;
 use Cake\Mailer\Email;
 use Cake\Utility\Inflector;
 use Cake\Utility\Security;
+use Cake\Routing\Router;
 
 /**
  * Uncomment block of code below if you want to use `.env` file during development.
@@ -197,3 +198,13 @@ Type::build('timestamp')
 //Inflector::rules('irregular', ['red' => 'redlings']);
 //Inflector::rules('uninflected', ['dontinflectme']);
 //Inflector::rules('transliteration', ['/å/' => 'aa']);
+
+$serverName = $_SERVER['SERVER_NAME'];
+$sitePath = Router::url('/', true);
+$sitePath = rtrim($sitePath, "/");
+
+$siteurl = Router::url('/', true);
+$dummyimgUrl = $siteurl . 'img/img-thumbnail.jpg';
+define('EMPTYIMAGE', $dummyimgUrl);
+define('SITEURL', $siteurl);
+define('ADMINISTRATOR', 'admin_img');

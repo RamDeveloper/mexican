@@ -21,6 +21,9 @@
                 'data-placeholder'=>'multiple',
                 'class'=>'chosen-select form-control'));
     ?>
+    <br>
+    <h3 id="advanced_option">Advanced Option</h3>
+    <div id="advanced_brand">
     <?php
     echo $this->Form->control('Brand.name', array(
                 'options' => $brand,
@@ -29,6 +32,7 @@
                 'multiple'=>'multiple',
                 'class'=>'chosen-select form-control'));
     ?>
+    </div>
     <br>
     <?= $this->Form->button(__('Submit', ['class' => 'float-right btn btn-success'])) ?>
     <?= $this->Form->end() ?>

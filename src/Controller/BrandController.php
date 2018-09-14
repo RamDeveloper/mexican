@@ -2,6 +2,9 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Core\Configure;
+use Cake\Routing\Router;
+use Cake\Auth\DefaultPasswordHasher;
 
 /**
  * Brand Controller
@@ -52,8 +55,26 @@ class BrandController extends AppController
     public function add()
     {
         $brand = $this->Brand->newEntity();
+        
         if ($this->request->is('post')) {
-            $brand = $this->Brand->patchEntity($brand, $this->request->getData());
+            $requestData = $this->request->getData();
+            $get_brandid = $this->Brand->find('all')->select('id')->order(['Brand.id' => 'desc'])->first();
+            $brandid = ($get_brandid->id) + 1;
+            if (empty($requestData['image']['name'])) {
+                $this->Flash->errorerror(__('Please upload valid image and try again!'));
+                return $this->redirect(['action' => 'index']);
+            } else if (!empty($requestData['image']['name'])) {
+                $imageCheck = $this->ImageUpload->checkImage($requestData['image']);
+                if (!empty($imageCheck['error'])) {
+                    $this->Flash->error(__($imageCheck['error']));
+                    return $this->redirect(['action' => 'index']);
+                } else {
+                    $output = $this->ImageUpload->upload_image_and_thumbnail($requestData['image'], ADMINISTRATOR, $brandid);
+                }
+            }
+            $requestData['image_url'] = !empty($output['imageURL']) ? $output['imageURL'] : $this->request->getAttribute("webroot") . EMPTYIMAGE;
+            $requestData['users_id'] = 1; //For now
+            $brand = $this->Brand->patchEntity($brand, $requestData);
             if ($this->Brand->save($brand)) {
                 $this->Flash->success(__('The brand has been saved.'));
 
@@ -61,9 +82,8 @@ class BrandController extends AppController
             }
             $this->Flash->error(__('The brand could not be saved. Please, try again.'));
         }
-        $users = $this->Brand->Users->find('list', ['limit' => 200]);
         $speciality = $this->Brand->Speciality->find('list', ['limit' => 200]);
-        $this->set(compact('brand', 'users', 'speciality'));
+        $this->set(compact('brand', 'speciality'));
     }
 
     /**

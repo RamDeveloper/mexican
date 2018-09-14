@@ -1,5 +1,6 @@
 $(document).ready(function () {
   autocomplete();
+  hide_show();
 });
 function autocomplete(){
   $("#speciality-name").change(function(){ 
@@ -14,13 +15,18 @@ function autocomplete(){
            $("#brand-name").empty(); 
            }
          }).done(function( data ) {
-           response( $.map( data, function( item ) {
-               $('#brand-name').append('<option value="'+item.id+'">' + item.name + '</option>');
-          }));
- 
+            $.map( data, function( item ) {
+               $('#brand-name').append('<option value="'+item.id+'">' + item.value + '</option>');
+          });
           $("#brand-name").trigger("chosen:updated");
           $("#brand-name").trigger("liszt:updated");
- 
         });
   });
+}
+function hide_show(){
+  $('#advanced_brand').hide();
+  $('#advanced_option').click(function(){
+    autocomplete();
+    $("#advanced_brand").show();
+  })
 }

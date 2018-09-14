@@ -21,7 +21,7 @@ and open the template in the editor.
         <section class="mar-bottom-30 mar-top-30">
             <div class="login-box">
                 <header class="header text-center mar-bottom-30">
-                    <?= $this->Html->image('logo.png', ['alt' => '', 'url' => ['controller' => 'Home', 'action' => 'index']]); ?>
+                    <?php //echo $this->Html->image('logo.png', ['alt' => '', 'url' => ['controller' => 'Home', 'action' => 'index']]); ?>
                 </header>
                 <div class="white-bg clearfix">
                     <p> <?php echo $this->Flash->render(); ?> </p>
