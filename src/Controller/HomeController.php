@@ -2,6 +2,10 @@
 namespace App\Controller;
 use Cake\Event\Event;
 use App\Controller\AppController;
+use Cake\Auth\DefaultPasswordHasher;
+use Cake\Mailer\Email;
+use Cake\Core\Configure;
+use Cake\I18n\Time;
 
 /**
  * Speciality Controller
@@ -17,6 +21,7 @@ class HomeController extends AppController
         parent::beforeFilter($event);
         $this->loadModel('Speciality');
         $this->loadModel('Users');
+        $this->loadModel('Brand');
         $this->viewBuilder()->setLayout('frontend/default');
     }
     /**
@@ -26,9 +31,13 @@ class HomeController extends AppController
      */
     public function index()
     {
-        $speciality = $this->paginate($this->Speciality);
-
-        $this->set(compact('speciality'));
+        $speciality = $this->Speciality->find('list', ['keyField' => 'id', 'valueField' => 'name'])->where(['Speciality.is_active' => 1])->enableHydration(false)->toArray();
+        $list_brands = $this->Brand->find('all')->where(['Brand.is_active'=>1]);
+        foreach ($list_brands as $key => $val) {
+            // $brand[$key]['id'] = $val->id;
+            $brand[$key]['value'] = $val->name;
+        }
+        $this->set(compact('speciality','brand'));
     }
 
     /**
@@ -110,4 +119,22 @@ class HomeController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function getBrand() {
+        // Configure::write('debug', false);
+        $this->render = false;
+        $this->viewBuilder()->setLayout = false;
+        $this->autoRender = false;
+        $term = $this->request->getQuery('speciality');
+        $list_brands = $this->Brand->find('all')->where(['Brand.speciality_id'=>$term]);
+        $this->response->type('json');
+        foreach ($list_brands as $key => $val) {
+            $brand[$key]['id'] = $val->id;
+            $brand[$key]['label'] = $val->name;
+            $brand[$key]['value'] = $val->name;
+        }
+        $this->response->body(json_encode($brand));
+        return $this->response;
+    }
+
 }

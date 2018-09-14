@@ -11,9 +11,10 @@ and open the template in the editor.
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title><?= $this->fetch('title') ?></title>
-        <?= $this->Html->css('font-awesome.css') ?>
-        <?= $this->Html->css('stylesheet.css') ?>
-        <?= $this->Html->css('custom.css') ?>
+        <?= $this->Html->css('base.css') ?>
+        <?= $this->Html->css('bootstrap.min.css') ?>
+        <?= $this->Html->css('chosen/chosen.css') ?>
+        <?= $this->Html->css('chosen/style.css') ?>
         <?= $this->Html->meta('favicon.ico', '/img/favicon-32x32.png', ['type' => 'icon']); ?>
     </head>
     <body class="gray-bg">
@@ -29,6 +30,6 @@ and open the template in the editor.
                 </div>
             </div>
         </section>
-        <?= $this->Html->script(['jquery-3.3.1.min', 'AdminLTE./bootstrap/js/bootstrap.min']) ?>
+        <?= $this->Html->script(['jquery-3.3.1.min','custom' ,'bootstrap.min','chosen/chosen.jquery','chosen/init']) ?>
     </body>
 </html>
