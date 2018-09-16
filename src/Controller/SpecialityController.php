@@ -34,11 +34,13 @@ class SpecialityController extends AppController
      */
     public function view($id = null)
     {
+        $listspeciality = $this->Speciality->find('all');
         $speciality = $this->Speciality->get($id, [
             'contain' => ['Brand']
         ]);
 
         $this->set('speciality', $speciality);
+        $this->set(compact('listspeciality'));
     }
 
     /**

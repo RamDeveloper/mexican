@@ -1,6 +1,12 @@
 $(document).ready(function () {
   autocomplete();
   hide_show();
+  $('.slider').bxSlider({
+    mode: 'horizontal',
+    captions: false,
+    slideWidth: 900,
+    controls:true
+  });
 });
 function autocomplete(){
   $("#speciality-name").change(function(){ 
@@ -13,6 +19,7 @@ function autocomplete(){
           data: {speciality: speciality_val},
           beforeSend: function(){ 
            $("#brand-name").empty(); 
+           $("#brand-name option").remove();
            }
          }).done(function( data ) {
             $.map( data, function( item ) {
@@ -26,7 +33,6 @@ function autocomplete(){
 function hide_show(){
   $('#advanced_brand').hide();
   $('#advanced_option').click(function(){
-    autocomplete();
     $("#advanced_brand").show();
   })
 }

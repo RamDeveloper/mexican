@@ -13,7 +13,7 @@
 </nav>
 <div class="speciality index large-9 medium-8 columns content">
     <h3><?= __('Speciality') ?></h3>
-    <?= $this->Form->create('Speciality', array('type' => 'file', 'id' => 'SpecialtiyForm')) ?>
+    <?= $this->Form->create('Speciality', array('type' => 'file', 'id' => 'SpecialtiyForm','url' => ['action' => 'slideshow'])) ?>
     <?php
     echo $this->Form->control('Speciality.name', array(
                 'options' => $speciality,

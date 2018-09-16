@@ -15,6 +15,7 @@ and open the template in the editor.
         <?= $this->Html->css('bootstrap.min.css') ?>
         <?= $this->Html->css('chosen/chosen.css') ?>
         <?= $this->Html->css('chosen/style.css') ?>
+        <?= $this->Html->css('jquery.bxslider.css') ?>
         <?= $this->Html->meta('favicon.ico', '/img/favicon-32x32.png', ['type' => 'icon']); ?>
     </head>
     <body class="gray-bg">
@@ -30,6 +31,6 @@ and open the template in the editor.
                 </div>
             </div>
         </section>
-        <?= $this->Html->script(['jquery-3.3.1.min','custom' ,'bootstrap.min','chosen/chosen.jquery','chosen/init']) ?>
+        <?= $this->Html->script(['jquery-3.3.1.min','custom' ,'bootstrap.min','chosen/chosen.jquery','jquery.bxslider','chosen/init']) ?>
     </body>
 </html>

@@ -40,6 +40,23 @@ class HomeController extends AppController
         $this->set(compact('speciality','brand'));
     }
 
+    public function slideshow()
+    {
+
+        $list_brands = $this->Brand->find('all')->where(['Brand.speciality_id'=>1]);
+        if ($this->request->is('post')) {
+            $requestData = $this->request->getData();
+            if(!empty($requestData['Brand'])){
+                $brand_id = $requestData['Brand']['name'];
+            }
+            if(!empty($brand_id)){
+                $list_brands = $this->Brand->find('all')->contain('Speciality')->where(['Brand.speciality_id'=>$requestData['Speciality']['name'],'Brand.id IN'=>$brand_id])->enableHydration(false)->toArray();
+            }else{
+                $list_brands = $this->Brand->find('all')->contain('Speciality')->where(['Brand.speciality_id'=>$requestData['Speciality']['name']])->enableHydration(false)->toArray();
+            }
+        }
+        $this->set(compact('list_brands'));
+    }
     /**
      * View method
      *
