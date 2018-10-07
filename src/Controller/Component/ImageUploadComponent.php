@@ -1,4 +1,10 @@
 <?php
+/*
+ * @created : Ramkumar S  
+ * @created on : September,2018 
+ */
+?>
+<?php
 
 namespace App\Controller\Component;
 
@@ -30,7 +36,7 @@ class ImageUploadComponent extends Component {
         /*
           Check the imageSize to avoid the bigger size images
          */
-        $acceptImagesize = 2072744;
+        $acceptImagesize = 3072744;
         $imageSize = $img['size'];
         if ($imageSize <= $acceptImagesize) {
             $this->fileExtension = $this->getFileExtension($img['name']);
@@ -52,7 +58,7 @@ class ImageUploadComponent extends Component {
                 $output['error'] = "Uploaded image should be in JPEG or PNG";
             }
         } else {
-            $output['error'] = "Uploaded image size should be in Less than 2.00 MB";
+            $output['error'] = "Uploaded image size should be in Less than 3.00 MB";
         }
 
         return $output;
@@ -75,8 +81,7 @@ class ImageUploadComponent extends Component {
             /* Get the File extension by using getFileExtenstion function */
             $filetype = $this->getFileExtension($img['name']);
             $img_tmpname = $img['tmp_name'];
-//            $output['imageURL'] = $this->request->webroot.$this->homeUploaddir . '/' . $img['name'];
-            $output['imageURL'] = '/'.$this->homeUploaddir . '/' . $img['name'];
+            $output['imageURL'] = $this->homeUploaddir . '/' . $img['name'];
             $filetype = strtolower($filetype);
             $imageResize = $this->resizeImage($filetype, $img_tmpname, $this->homeUploaddir, $img);
             move_uploaded_file($img['tmp_name'], WWW_ROOT . $this->homeUploaddir . '/' . $img['name']);

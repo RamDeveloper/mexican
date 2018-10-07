@@ -20,10 +20,10 @@ a {
 }
 
 header {
-    background-color: #D33C44;
+    background-color: #fff;
     color: #ffffff;
     font-size: 30px;
-    height: 84px;
+    height: 100px;
     line-height: 64px;
     padding: 16px 0px;
     box-shadow: 0px 1px rgba(0, 0, 0, 0.24);
@@ -319,11 +319,12 @@ pre {
 }
 
 .top-bar.expanded .title-area {
-    background: #01545b;
+    background: #424343;
+    text-transform: uppercase;
 }
 
 .top-bar.expanded, .top-bar,.top-bar-section ul li,.top-bar-section li:not(.has-form) a:not(.button) {
-    background: #116d76;
+    background: #424343;
 }
 
 .top-bar-section li:not(.has-form) a:not(.button):hover {
@@ -482,6 +483,9 @@ div.message.hidden {
 .container {
     overflow: hidden;
     min-height: 92%; /* full height almost always */
+    width: 100%;
+    margin: 0 auto;
+    background: #fff;
 }
 
 /* Force equal height by overflowing */
@@ -489,6 +493,7 @@ div.message.hidden {
 #actions-sidebar {
     margin-bottom: -99999px;
     padding-bottom: 99999px;
+    margin-top: 20px;
 }
 @media(max-width: 640px) {
     #actions-sidebar {
@@ -501,6 +506,8 @@ div.message.hidden {
     color: #be140b;
     padding-bottom: 0.5rem;
     margin-bottom: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .content h4 {
@@ -521,4 +528,18 @@ div.message.hidden {
 table td {
     vertical-align: top;
     word-break: break-all;
+}
+.side-nav li a{
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+body{
+    background: #eee;
+}
+.top-bar-section ul li > a{
+    font-size: 18px;
+}
+.top-bar-section ul{
+    margin-right: 5%;
 }

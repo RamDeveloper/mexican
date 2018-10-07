@@ -1,4 +1,10 @@
 <?php
+/*
+ * @created : Ramkumar S  
+ * @created on : September,2018 
+ */
+?>
+<?php
 namespace App\Controller;
 
 use App\Controller\AppController;
@@ -78,7 +84,7 @@ class BrandController extends AppController
             if ($this->Brand->save($brand)) {
                 $this->Flash->success(__('The brand has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controller'=>'Speciality','action' => 'index']);
             }
             $this->Flash->error(__('The brand could not be saved. Please, try again.'));
         }
@@ -103,7 +109,7 @@ class BrandController extends AppController
             if ($this->Brand->save($brand)) {
                 $this->Flash->success(__('The brand has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controller'=>'Speciality','action' => 'index']);
             }
             $this->Flash->error(__('The brand could not be saved. Please, try again.'));
         }
@@ -129,6 +135,6 @@ class BrandController extends AppController
             $this->Flash->error(__('The brand could not be deleted. Please, try again.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['controller'=>'Speciality','action' => 'index']);
     }
 }

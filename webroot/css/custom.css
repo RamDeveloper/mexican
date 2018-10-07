@@ -1,0 +1,26 @@
+#advanced_option{
+    cursor:pointer;
+}
+
+.advanced_div{
+    padding-top:30px;
+}
+.bx-wrapper .bx-pager, .text-left{
+display:none; 
+}
+
+  @media (max-width: 1024px) {
+    .white-box{
+padding:0px !important;
+}
+.bx-wrapper{
+margin:0 !important;
+}
+.bx-controls{
+display:none !important;
+}
+.bx-wrapper{
+box-shawdow:none !important;
+    border: 0px !important;
+}
+}

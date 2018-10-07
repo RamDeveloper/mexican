@@ -17,6 +17,7 @@
 <html>
 <head>
     <?= $this->Html->charset() ?>
+    <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
     <title>
         <?= $this->fetch('title') ?>
     </title>

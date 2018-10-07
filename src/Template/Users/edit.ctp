@@ -1,7 +1,7 @@
 <?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\User $user
+/*
+ * @created : Ramkumar S  
+ * @created on : September,2018 
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -21,9 +21,9 @@
     <fieldset>
         <legend><?= __('Edit User') ?></legend>
         <?php
-            echo $this->Form->control('name');
-            echo $this->Form->control('email');
-            echo $this->Form->control('password');
+            // echo $this->Form->control('name');
+            // echo $this->Form->control('email');
+            // echo $this->Form->control('password');
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

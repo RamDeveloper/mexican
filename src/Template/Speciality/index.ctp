@@ -1,7 +1,7 @@
 <?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Speciality[]|\Cake\Collection\CollectionInterface $speciality
+/*
+ * @created : Ramkumar S  
+ * @created on : September,2018 
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">

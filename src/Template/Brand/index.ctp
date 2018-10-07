@@ -1,17 +1,14 @@
 <?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Brand[]|\Cake\Collection\CollectionInterface $brand
+/*
+ * @created : Ramkumar S  
+ * @created on : September,2018 
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Brand'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
         <li><?= $this->Html->link(__('List Speciality'), ['controller' => 'Speciality', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Speciality'), ['controller' => 'Speciality', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="brand index large-9 medium-8 columns content">
@@ -42,7 +39,6 @@
                 <td><?= h($brand->is_active) ?></td>
                 <td><?= h($brand->created) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $brand->id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $brand->id]) ?>
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $brand->id], ['confirm' => __('Are you sure you want to delete # {0}?', $brand->id)]) ?>
                 </td>

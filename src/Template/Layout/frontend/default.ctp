@@ -1,3 +1,9 @@
+<?php
+/*
+ * @created : Ramkumar S  
+ * @created on : September,2018 
+ */
+?>
 <?php use Cake\Core\Configure; ?>
 <!DOCTYPE html>
 <!--
@@ -10,27 +16,17 @@ and open the template in the editor.
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
         <title><?= $this->fetch('title') ?></title>
-        <?= $this->Html->css('base.css') ?>
+        <?= $this->Html->css('custom.css') ?>
         <?= $this->Html->css('bootstrap.min.css') ?>
-        <?= $this->Html->css('chosen/chosen.css') ?>
-        <?= $this->Html->css('chosen/style.css') ?>
+        <?= $this->Html->css('chosen.css') ?>
+        <?= $this->Html->css('home.css') ?>
         <?= $this->Html->css('jquery.bxslider.css') ?>
         <?= $this->Html->meta('favicon.ico', '/img/favicon-32x32.png', ['type' => 'icon']); ?>
     </head>
-    <body class="gray-bg">
-        <section class="mar-bottom-30 mar-top-30">
-            <div class="login-box">
-                <header class="header text-center mar-bottom-30">
-                    <?php //echo $this->Html->image('logo.png', ['alt' => '', 'url' => ['controller' => 'Home', 'action' => 'index']]); ?>
-                </header>
-                <div class="white-bg clearfix">
-                    <p> <?php echo $this->Flash->render(); ?> </p>
-                    <p> <?php echo $this->Flash->render('auth'); ?> </p>
-                    <?= $this->fetch('content') ?>
-                </div>
-            </div>
-        </section>
-        <?= $this->Html->script(['jquery-3.3.1.min','custom' ,'bootstrap.min','chosen/chosen.jquery','jquery.bxslider','chosen/init']) ?>
+    <body>
+        <?= $this->fetch('content') ?>
+        <?= $this->Html->script(['jquery-3.3.1.min','custom' ,'bootstrap.min','chosen/chosen.jquery','jquery.bxslider','chosen/init','jquery.validate.min']) ?>
     </body>
 </html>

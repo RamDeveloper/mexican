@@ -13,13 +13,14 @@
  * @license       https://opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = 'CakePHP: the rapid development php framework';
+$cakeDescription = 'Mexicanwave Pharma';
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
     <title>
         <?= $cakeDescription ?>:
         <?= $this->fetch('title') ?>
@@ -32,26 +33,44 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+    <?= $this->Html->script(['jquery-3.3.1.min','back_custom','jquery.validate.min']) ?>
 </head>
 <body>
+    <header>
+    <div class="logo text-center pt-30 pb-30">
+      <?php echo $this->Html->image('logo.png', ['alt' => 'Logo', 'url' => ['controller' => 'Home', 'action' => 'index']]); ?>
+    </div>
+    </header>
     <nav class="top-bar expanded" data-topbar role="navigation">
-        <ul class="title-area large-3 medium-4 columns">
+        <!-- <ul class="title-area large-3 medium-4 columns">
             <li class="name">
                 <h1><a href=""><?= $this->fetch('title') ?></a></h1>
             </li>
-        </ul>
+        </ul> -->
         <div class="top-bar-section">
             <ul class="right">
-                <li><a target="_blank" href="https://book.cakephp.org/3.0/">Documentation</a></li>
-                <li><a target="_blank" href="https://api.cakephp.org/3.0/">API</a></li>
+                <li><?= $this->Html->link(__('Home'), ['controller' => 'Home', 'action' => 'index']) ?></li>
+                <li><?= $this->Html->link(__('List Speciality'), ['controller' => 'speciality', 'action' => 'view','1']) ?></li>
+                <li><?= $this->Html->link(__('Add Brand'), ['controller' => 'Brand', 'action' => 'add']) ?></li>
             </ul>
         </div>
     </nav>
     <?= $this->Flash->render() ?>
     <div class="container clearfix">
         <?= $this->fetch('content') ?>
-    </div>
+    <div class="clearfix"></div>
+    <br>
     <footer>
+        <div class="footer">
+            <div class="container text-center mt-30">
+                <div class="footer-bottom">
+                    <div class="copy-rights">
+                        <p>Copyright © Mexican Wave Pharma. All Rights Reserved</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </footer>
+    </div>
 </body>
 </html>

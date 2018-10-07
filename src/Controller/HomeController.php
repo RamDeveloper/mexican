@@ -1,4 +1,10 @@
 <?php
+/*
+ * @created : Ramkumar S  
+ * @created on : September,2018 
+ */
+?>
+<?php
 namespace App\Controller;
 use Cake\Event\Event;
 use App\Controller\AppController;
@@ -34,7 +40,7 @@ class HomeController extends AppController
         $speciality = $this->Speciality->find('list', ['keyField' => 'id', 'valueField' => 'name'])->where(['Speciality.is_active' => 1])->enableHydration(false)->toArray();
         $list_brands = $this->Brand->find('all')->where(['Brand.is_active'=>1,'Brand.speciality_id'=>1]);
         foreach ($list_brands as $key => $val) {
-            // $brand[$key]['id'] = $val->id;
+            $brand[$key]['id'] = $val->id;
             $brand[$key]['value'] = $val->name;
         }
         $this->set(compact('speciality','brand'));
@@ -140,17 +146,18 @@ class HomeController extends AppController
     public function getBrand() {
         // Configure::write('debug', false);
         $this->render = false;
-        $this->viewBuilder()->setLayout = false;
-        $this->autoRender = false;
+        $this->viewBuilder()->setLayout('ajax');
+        // $this->autoRender = false;
         $term = $this->request->getQuery('speciality');
         $list_brands = $this->Brand->find('all')->where(['Brand.speciality_id'=>$term]);
-        $this->response->type('json');
+        // $this->response->type('json');
         foreach ($list_brands as $key => $val) {
             $brand[$key]['id'] = $val->id;
             $brand[$key]['value'] = $val->name;
         }
-        $this->response->body(json_encode($brand));
-        return $this->response;
+        $this->set(compact('brand'));
+        // $this->response->body(json_encode($brand));
+        // return $this->response;
     }
 
 }

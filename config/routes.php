@@ -53,6 +53,9 @@ Router::scope('/', function (RouteBuilder $routes) {
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
     $routes->connect('/', ['controller' => 'Home', 'action' => 'index']);
+    $routes->connect('/mwpadmin', ['controller' => 'Speciality', 'action' => 'view','1']);
+    $routes->connect('/mwpadmin/*', ['controller' => 'Speciality', 'action' => 'view']);
+    $routes->connect('/mwpadmin', ['controller' => 'Speciality']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.

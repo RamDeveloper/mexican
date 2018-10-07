@@ -1,7 +1,7 @@
 <?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Brand $brand
+/*
+ * @created : Ramkumar S  
+ * @created on : September,2018 
  */
 ?>
 <nav class="large-3 medium-4 columns" id="actions-sidebar">
@@ -18,8 +18,9 @@
         <?php
             echo $this->Form->control('name',['label'=>'Brand Name']);
             echo $this->Form->control('position');
-            echo $this->Form->control('image', ['type' => 'file', 'label' => ['text' => 'Upload Brand Image <i class="text-muted">(The image must be JPG or PNG file, less then 2MB in size and dimensions should be 750px x 360px)</i>', 'escape'=>false]]);
-            echo $this->Form->control('speciality_id', ['options' => $speciality, 'empty' => true]);
+            echo $this->Form->control('image', ['type' => 'file', 'label' => ['text' => 'Upload Brand Image', 'escape'=>false]]);
+            echo '<i class="text-muted">(The image must be JPG or PNG file, less then 2MB in size and dimensions should be 750px x 360px)</i><br><br>';
+            echo $this->Form->control('speciality_id', ['options' => $speciality, 'empty' =>'Choose Speciality']);
             echo $this->Form->control('is_active',['type'=>'hidden','value'=>1]);
         ?>
     </fieldset>
